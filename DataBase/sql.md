@@ -52,7 +52,7 @@
                 );
     - **Foreign Key**:
         A foreign key is a column or a set of columns in a table that refers to the primary key of another table. It establishes a relationship between two tables, where the foreign key column(s) in one table references the primary key column(s) in another table. The foreign key constraint ensures referential integrity, meaning the values in the foreign key column(s) must match the values in the referenced primary key column(s) or be null.
-           ```mysql
+           ```java
             CREATE TABLE courses (id INT PRIMARY KEY, name VARCHAR(50));
             CREATE TABLE enrollments (
                 student_id INT,
@@ -107,4 +107,13 @@
 - These aggregate functions allow you to obtain useful insights and summaries from data. For example, you can use the COUNT function to count the number of sales transactions, the SUM function to calculate the total revenue, or the AVG function to determine the average salary of employees.
 
 
-##
+## what is purpose of window function?
+- Window functions in SQL are used to perform calculations across a set of rows that are related to the current row. They provide a way to perform calculations and retrieve results based on a specific window or subset of rows, rather than the entire table. Window functions operate on a group of rows called a window, which is defined using the OVER clause.
+- The purpose of window functions is to provide more advanced and flexible calculations compared to traditional aggregate functions. While aggregate functions return a single value for a group of rows, window functions return a value for each row in the result set, based on the specified window.
+- Here are some common use cases and purposes of window functions:
+    - Calculating Aggregates: Window functions allow you to calculate aggregate functions (such as SUM, AVG, MIN, MAX) over a specific window of rows, rather than the entire table. This can be useful for calculating running totals, moving averages, or cumulative sums.
+    - Ranking and Ordering: Window functions enable ranking, row numbering, and ordering of rows within a window. You can assign ranks to rows based on certain criteria, retrieve the top N records, or calculate percentiles.
+    - Analytical Functions: Window functions provide analytical capabilities for data analysis and reporting. You can calculate differences between rows, identify peaks or valleys in a time series, or compare values within a specific range.
+    - Partitioning Data: Window functions allow you to partition or group data within a window based on one or more columns. This allows you to perform calculations separately for each partition, providing insights and comparisons within subsets of data.
+
+

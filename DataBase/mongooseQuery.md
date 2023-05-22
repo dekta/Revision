@@ -6,7 +6,7 @@
 
 
 #### Aggregate examples:
- ```
+ ```javascript
  Model.
   aggregate([{ $match: { age: { $gte: 21 }}}]).
   unwind('tags').
