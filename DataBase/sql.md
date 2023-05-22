@@ -1,5 +1,7 @@
 ## What is SQL
-    SQL stands for Structured Query Language. It is a programming language used for managing and manipulating relational databases. SQL allows users to define, manipulate, and retrieve data from databases. It provides a standard syntax and set of commands for creating, modifying, and querying databases, as well as performing various operations such as inserting, updating, and deleting data. SQL is widely used in database management systems (DBMS) like MySQL, Oracle, Microsoft SQL Server, and PostgreSQL.
+    SQL stands for Structured Query Language. It is a programming language used for managing and manipulating relational databases. SQL allows users to define, manipulate, and retrieve data from databases. 
+    It provides a standard syntax and set of commands for creating, modifying, and querying databases, as well as performing various operations such as inserting, updating, and deleting data. 
+    SQL is widely used in database management systems (DBMS) like MySQL, Oracle, Microsoft SQL Server, and PostgreSQL.
     
 
 
@@ -10,7 +12,8 @@
 
 
 ## what is RDBMS   
-    RDBMS stands for Relational Database Management System. It refers to a software application or system that manages and controls a relational database. An RDBMS provides the tools and mechanisms for creating, organizing, and manipulating relational databases based on the relational model.
+    RDBMS stands for Relational Database Management System. It refers to a software application or system that manages and controls a relational database.
+    An RDBMS provides the tools and mechanisms for creating, organizing, and manipulating relational databases based on the relational model.
     The main components of an RDBMS include:
         Data Definition Language (DDL): It is used to define the structure of the database, including creating tables, specifying constraints, and defining relationships between tables.
         Data Manipulation Language (DML): It allows users to perform operations on the data stored in the database, such as inserting, updating, and deleting records. SQL is the most common language used for DML operations.
