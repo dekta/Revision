@@ -52,15 +52,14 @@
                 );
     - **Foreign Key**:
         A foreign key is a column or a set of columns in a table that refers to the primary key of another table. It establishes a relationship between two tables, where the foreign key column(s) in one table references the primary key column(s) in another table. The foreign key constraint ensures referential integrity, meaning the values in the foreign key column(s) must match the values in the referenced primary key column(s) or be null.
-           ```java
-            CREATE TABLE courses (id INT PRIMARY KEY, name VARCHAR(50));
+        - CREATE TABLE courses (id INT PRIMARY KEY, name VARCHAR(50));
             CREATE TABLE enrollments (
                 student_id INT,
                 course_id INT,
                 FOREIGN KEY (student_id) REFERENCES students(id),
                 FOREIGN KEY (course_id) REFERENCES courses(id)
                 );
-            ```
+            
 
 
 ## what is table 
