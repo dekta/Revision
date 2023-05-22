@@ -1,14 +1,19 @@
 ## What is SQL
-    SQL stands for Structured Query Language. It is a programming language used for managing and manipulating relational databases. SQL allows users to define, manipulate, and retrieve data from databases. 
+    SQL stands for Structured Query Language. It is a programming language used for managing and manipulating relational databases. 
+    SQL allows users to define, manipulate, and retrieve data from databases. 
     It provides a standard syntax and set of commands for creating, modifying, and querying databases, as well as performing various operations such as inserting, updating, and deleting data. 
     SQL is widely used in database management systems (DBMS) like MySQL, Oracle, Microsoft SQL Server, and PostgreSQL.
     
 
 
 ## what is relational database?
-    A relational database is a type of database management system (DBMS) that organizes and stores data in a structured manner based on the relational model. In a relational database, data is organized into tables, which are composed of rows (also known as records) and columns (also known as fields).
-    The tables in a relational database are related to each other through common attributes or keys. These relationships allow data to be linked and retrieved efficiently. The relational model enforces data integrity and provides mechanisms for data manipulation using SQL.
-    Relational databases are widely used in various applications and industries due to their flexibility, scalability, and ability to handle complex data relationships. They provide a reliable and efficient way to store, retrieve, and manipulate structured data. Some popular relational database management systems include MySQL, Oracle Database, Microsoft SQL Server, and PostgreSQL.
+    A relational database is a type of database management system (DBMS) that organizes and stores data in a structured manner based on the relational model.
+    In a relational database, data is organized into tables, which are composed of rows (also known as records) and columns (also known as fields).
+    The tables in a relational database are related to each other through common attributes or keys. 
+    These relationships allow data to be linked and retrieved efficiently. 
+    The relational model enforces data integrity and provides mechanisms for data manipulation using SQL.
+    Relational databases are widely used in various applications and industries due to their flexibility, scalability, and ability to handle complex data relationships. 
+    They provide a reliable and efficient way to store, retrieve, and manipulate structured data. Some popular relational database management systems include MySQL, Oracle Database, Microsoft SQL Server, and PostgreSQL.
 
 
 ## what is RDBMS   
