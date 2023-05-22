@@ -6,10 +6,12 @@
 
 
 #### Aggregate examples:
+ ```
  Model.
   aggregate([{ $match: { age: { $gte: 21 }}}]).
   unwind('tags').
   exec();
+```
 
 
 #### more Examples of aggregation:

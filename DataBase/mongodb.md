@@ -174,17 +174,18 @@ Here are some considerations when choosing between embedded and referenced docum
 - In Mongoose, you can create indexes on fields in your MongoDB collections using the index() method provided by the Mongoose Schema.
 - Here's an example of how to create an index using Mongoose:
 - Define your Mongoose Schema, specifying the fields you want to index:
+    ```javascript
     const mongoose = require('mongoose');
     const yourSchema = new mongoose.Schema({
-    // Schema fields
     field1: { type: String, index: true },
     field2: { type: Number },
-    // ...
     });
     // Create the model
     const YourModel = mongoose.model('YourModel', yourSchema);
+    ```
 
 - Save documents to the collection using the defined schema:
+    ```javascript
     const document = new YourModel({
     field1: 'value1',
     field2: 123,
@@ -196,8 +197,10 @@ Here are some considerations when choosing between embedded and referenced docum
         console.log('Document saved successfully:', savedDocument);
     }
     });
+    ```
 
 - Alternatively, you can create indexes directly using the createIndex() method of the Mongoose model:
+    ```javascript
     YourModel.createIndexes(function(err) {
     if (err) {
         console.error(err);
@@ -205,5 +208,5 @@ Here are some considerations when choosing between embedded and referenced docum
         console.log('Indexes created successfully.');
     }
     });
-
+    ```
 
