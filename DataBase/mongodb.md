@@ -137,6 +137,14 @@ Here are some considerations when choosing between embedded and referenced docum
 
 
 
+## How does MongoDB handle concurrency and locking?
+- MongoDB handles concurrency and locking using a mechanism known as Multi-Version Concurrency Control (MVCC). MVCC allows multiple concurrent operations to occur on the database while maintaining data consistency.
+- In MongoDB, each document has a unique identifier called the _id field. When a document is modified, instead of immediately updating the existing document, MongoDB creates a new version of the document with the changes applied. The new version of the document is assigned a new _id value and stored separately from the original document.
+- When multiple operations are performed concurrently on the same document, each operation works on a separate version of the document, avoiding conflicts. This approach ensures that readers can access the original version of the document while writers can create new versions with modifications.
+- To maintain consistency, MongoDB uses a form of optimistic concurrency control. When a write operation is performed, MongoDB checks if any other concurrent write operations have modified the document since the operation began. If conflicts are detected, MongoDB can either abort the operation or retry it, depending on the specified behavior.
+- MongoDB does not use traditional locks for read and write operations. Instead, it relies on fine-grained locks at the level of individual documents. This allows for greater concurrency as different documents can be accessed and modified simultaneously.
+- Overall, MongoDB's approach to concurrency and locking through MVCC allows for high-performance and scalable operations in multi-threaded and distributed environments. It enables concurrent access to the database while maintaining data consistency and minimizing conflicts.
+
 
 
 ## what is pipeline
@@ -155,4 +163,50 @@ Here are some considerations when choosing between embedded and referenced docum
     - Integration with Node.js and Express: Mongoose seamlessly integrates with Node.js and popular web frameworks like Express.js. It provides features like connection management, middleware support, and request-scoped database connections, making it easy to work with MongoDB in Node.js-based applications.
 -In simple terms, Mongoose is a library that helps Node.js developers work with MongoDB, a popular database. It makes it easier to define the structure of data (schemas), validate data, and perform operations on the database. Mongoose simplifies the interaction between Node.js and MongoDB, allowing developers to write code more easily and efficiently when working with data.
 
+
+## Explain why mongoose does not return a promise but has a .then
+- Mongoose does not return a Promise by default because it follows a callback-based approach for handling asynchronous operations. Instead of directly returning a Promise, Mongoose provides the .then() method as a way to handle the result of an asynchronous operation.
+- In simpler terms, when you perform an operation with Mongoose, such as querying the database, Mongoose expects you to provide a callback function that will be called when the operation completes. This allows you to specify what should happen with the result of the operation.
+- The .then() method in Mongoose allows you to attach a callback function that will be executed when the operation is finished. This way, you can work with the result of the operation without directly dealing with Promises.
+- So, while Mongoose doesn't return Promises itself, it offers the convenience of using the .then() method to handle asynchronous operations in a more familiar way.
+
+## How do you create indexes with mongoose
+- In Mongoose, you can create indexes on fields in your MongoDB collections using the index() method provided by the Mongoose Schema.
+- Here's an example of how to create an index using Mongoose:
+- Define your Mongoose Schema, specifying the fields you want to index:
+    ```javascript
+    const mongoose = require('mongoose');
+    const yourSchema = new mongoose.Schema({
+    field1: { type: String, index: true },
+    field2: { type: Number },
+    });
+    // Create the model
+    const YourModel = mongoose.model('YourModel', yourSchema);
+    ```
+
+- Save documents to the collection using the defined schema:
+    ```javascript
+    const document = new YourModel({
+    field1: 'value1',
+    field2: 123,
+    });
+    document.save(function(err, savedDocument) {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log('Document saved successfully:', savedDocument);
+    }
+    });
+    ```
+
+- Alternatively, you can create indexes directly using the createIndex() method of the Mongoose model:
+    ```javascript
+    YourModel.createIndexes(function(err) {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log('Indexes created successfully.');
+    }
+    });
+    ```
 
