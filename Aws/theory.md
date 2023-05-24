@@ -1,4 +1,5 @@
 ## What is cloud computing?
+
 - **Internet** : Global network of interconnected computer network that communicate with each other using a common set of protocols
 
 - **Cloud Computing** :
@@ -9,6 +10,7 @@
 
 
 ## What is AWS? Explain its key components and services.
+
 - AWS (Amazon Web Services) is a cloud computing platform offered by Amazon. It provides a wide range of cloud services that help individuals, businesses, and organizations build and deploy various applications and services. 
 Here are some key components and services of AWS:
 - **Compute Services**:
@@ -43,10 +45,10 @@ many more......
 
 
 
-## AWS Services in detail
 
 
-### AWS Lightsail:
+## AWS Lightsail:
+
 ```AWS Lightsail is a simplified cloud computing service provided by Amazon Web Services (AWS). It is designed to make it easy for developers, small businesses, and individuals to launch and manage virtual private servers (VPS) and other web applications without the complexity and overhead of traditional cloud infrastructure.```
 
 - Lightsail offers a streamlined user interface and pre-configured templates for common applications, making it accessible to users with limited technical expertise. Here's a simplified explanation of AWS Lightsail with an example:
@@ -63,7 +65,7 @@ many more......
 
 
 
-### AWS EC2:
+## AWS EC2:
 - Amazon EC2 (Elastic Compute Cloud) is a core service provided by Amazon Web Services (AWS) that allows users to rent virtual servers in the cloud, commonly referred to as instances. EC2 provides resizable compute capacity, enabling users to scale their applications based on demand. 
 - **Instance Types**: EC2 offers a wide range of instance types, each optimized for different use cases, such as general-purpose computing, memory-intensive workloads, GPU processing, and high-performance storage. Users can choose the instance type that best suits their specific requirements.
 - **Instance Lifecycle**: EC2 instances can be launched, stopped, terminated, and restarted as needed. Users have full control over the lifecycle of their instances and can start or stop them manually or programmatically using the AWS Management Console, CLI, or SDKs.
@@ -79,14 +81,16 @@ many more......
 
 
 
-### difference between ec2 ana lightsail
+## difference between ec2 ana lightsail
+
 - AWS Lightsail provides a simplified and user-friendly experience with fixed configurations and limited customization options, targeting users who want simplicity and ease of use. Amazon EC2 offers more advanced capabilities, flexibility, and integration options, making it suitable for users who require extensive customization, scalability, and advanced networking configurations.
 
 
 
 
 
-### what is AMIs?
+## what is AMIs?
+
 - AMIs stands for Amazon Machine Images. In Amazon Web Services (AWS), an AMI is a pre-configured template that contains the necessary information to launch an instance (virtual server) in the Amazon Elastic Compute Cloud (EC2). It is essentially a snapshot of a specific configuration, including the operating system, software, and any additional data or configurations that are part of the image.
 - Here are some key points about AMIs:
     - Template for Instances: An AMI serves as a blueprint or template for launching EC2 instances. It contains the root file system, operating system, applications, and data required to run an instance.
@@ -102,7 +106,8 @@ many more......
 
 
 
-### What is Auto Scaling in AWS? How does it work?
+## What is Auto Scaling in AWS? How does it work?
+
 - Auto Scaling is a feature provided by Amazon Web Services (AWS) that automatically adjusts the number of instances in a group based on predefined scaling policies and metrics. It helps ensure that the desired level of performance and availability is maintained in response to changing workload demands. Here's an overview of how Auto Scaling works in AWS:
 - **Auto Scaling Group (ASG)**: An Auto Scaling Group is a logical grouping of EC2 instances that are managed collectively. It defines the minimum and maximum number of instances that should be running at any given time.
 - **Scaling Policies**: Auto Scaling uses scaling policies to determine when and how to scale the instances. Scaling policies define the thresholds or conditions that trigger scaling actions. There are two types of scaling policies:
@@ -120,7 +125,8 @@ many more......
 
 
 
-### Explain the concept of Elastic Load Balancing in AWS.
+## Explain the concept of Elastic Load Balancing in AWS.
+
 - Elastic Load Balancing (ELB) is a service provided by Amazon Web Services (AWS) that automatically distributes incoming application traffic across multiple resources, such as EC2 instances, containers, or IP addresses, to ensure high availability, fault tolerance, and scalability. It acts as a single entry point for clients, intelligently distributing traffic across healthy resources to optimize performance and handle increased load. Here's an overview of the concept of Elastic Load Balancing:
     - **Load Balancer Types**: AWS offers three types of load balancers:
         - a. Classic Load Balancer (CLB): This is the legacy load balancer type that works at the transport layer (Layer 4) of the OSI model and distributes traffic based on protocols, ports, and IP addresses.
@@ -138,7 +144,8 @@ many more......
 
 
 
-### Route53
+## Route53
+
 - Amazon Route 53 is a scalable and highly available Domain Name System (DNS) web service provided by Amazon Web Services (AWS). It helps users manage and route traffic to their domain names effectively. Here's an overview of Route 53:
     - **Domain Registration**: Route 53 allows users to register domain names directly through the service. It supports a wide range of top-level domains (TLDs) and provides an interface to search for and register new domains.
     - **DNS Management**: Route 53 acts as a DNS service, allowing users to manage the DNS records for their domains. Users can configure DNS settings such as A records, CNAME records, MX records, and TXT records to map domain names to specific resources, such as EC2 instances, load balancers, or S3 buckets.
@@ -154,7 +161,8 @@ many more......
 
 
 
-### aws S3
+## AWS S3
+
 - Amazon Simple Storage Service (S3) is a scalable object storage service provided by Amazon Web Services (AWS). It allows users to store and retrieve large amounts of data, such as files, images, videos, and documents, in a highly available and durable manner. Here are the key features and concepts of AWS S3:
     - Object Storage: S3 is an object storage service, which means it stores data as objects. An object consists of the data itself, a unique key (or object identifier), and metadata that provides information about the object.
     - Scalability and Durability: S3 is designed to be highly scalable and durable. It automatically scales to accommodate virtually unlimited amounts of data and provides 99.999999999% (11 nines) durability, ensuring that data is protected against hardware failures, errors, and disasters.
@@ -172,7 +180,8 @@ many more......
 
 
 
-### what is AWS IAM
+## What is AWS IAM
+
 - AWS IAM (Identity and Access Management) is a service provided by Amazon Web Services (AWS) that helps manage user access and permissions to AWS resources. IAM enables you to securely control who can access your AWS resources and what actions they can perform. Here are the key concepts and features of AWS IAM:
     - Users: IAM allows you to create and manage IAM users, which represent individual people or applications that need access to AWS resources. Each user is assigned a unique IAM username and can have specific permissions and access keys associated with them.
     - Groups: IAM groups are a way to manage multiple users with similar access requirements. Instead of assigning permissions to individual users, you can create groups and assign permissions to the groups. Users can then be added to these groups, inheriting the group's permissions.
@@ -189,7 +198,8 @@ many more......
 
 
 
-### what is cloudfront
+## what is cloudfront
+
 - Amazon CloudFront is a content delivery network (CDN) service provided by Amazon Web Services (AWS). It helps deliver content, such as web pages, videos, images, and other static or dynamic files, to end-users with low latency and high data transfer speeds. CloudFront caches content in edge locations around the world, bringing it closer to users and reducing the time and bandwidth required to access it. Here are the key features and concepts of CloudFront:
     - Content Delivery: CloudFront accelerates the delivery of content by caching it at edge locations. When a user requests content, CloudFront serves it from the nearest edge location instead of the origin server, reducing latency and improving performance.
     - Edge Locations: CloudFront has a global network of edge locations strategically located in different geographic regions. These edge locations act as caching servers and serve content to end-users located nearby. The content is automatically routed to the edge location closest to the user, ensuring faster response times.
@@ -207,7 +217,8 @@ many more......
 
 
 
-### How does Amazon RDS differ from Amazon DynamoDB?
+## How does Amazon RDS differ from Amazon DynamoDB?
+
 - Amazon RDS (Relational Database Service) and Amazon DynamoDB are both database services provided by Amazon Web Services (AWS), but they have distinct differences in terms of their underlying technology, data models, and use cases. 
 
 **Amazon RDS**:
@@ -234,7 +245,8 @@ many more......
 
 
 
-### What is AWS Lambda? How does it work?
+## What is AWS Lambda? How does it work?
+
 - AWS Lambda is a serverless computing service provided by Amazon Web Services (AWS). It allows you to run your code without provisioning or managing servers. With Lambda, you can focus on writing and deploying code while AWS handles the infrastructure and scaling aspects.
     - Function Execution: In AWS Lambda, you write your code as a function, typically in one of the supported programming languages such as Python, Node.js, Java, C#, or Go. Each function performs a specific task or logic based on the event it receives.
     - Event-Driven Architecture: Lambda functions are event-driven, meaning they are triggered by events that occur within AWS services or custom events from external sources. These events can include changes in data, file uploads, database updates, API calls, or scheduled events.
@@ -250,7 +262,8 @@ many more......
 
 
 
-### Explain the different types of storage available in AWS.
+## Explain the different types of storage available in AWS.
+
 - AWS offers a variety of storage services designed to cater to different storage needs and use cases. Here are the different types of storage available in AWS:
     - **Amazon S3 (Simple Storage Service)**: Amazon S3 is an object storage service that provides durable, scalable, and highly available storage for various types of data, including documents, images, videos, backups, and logs. It offers high durability and availability, and data is organized into buckets with a flat structure. S3 also supports features like versioning, lifecycle management, event notifications, and fine-grained access controls.
     - **Amazon EBS (Elastic Block Store)**: Amazon EBS provides persistent block-level storage volumes that can be attached to Amazon EC2 instances. It offers durable and high-performance storage for applications and databases. EBS volumes are network-attached and can be used as primary storage for boot volumes or to store data independently. They support features like snapshots for data backup and replication across Availability Zones for data durability.
@@ -265,7 +278,8 @@ many more......
 
 
 
-### What are the benefits of using Amazon Elastic Beanstalk?
+## What are the benefits of using Amazon Elastic Beanstalk?
+
 - Amazon Elastic Beanstalk is a fully managed service provided by AWS that simplifies the deployment, management, and scaling of web applications and services. It offers several benefits to developers and businesses. Here are the key benefits of using Amazon Elastic Beanstalk:
     - Easy Application Deployment: Elastic Beanstalk allows developers to quickly deploy their applications without worrying about the underlying infrastructure. It abstracts away the complexities of infrastructure provisioning, configuration, and management, enabling developers to focus on writing code and building their applications.
     - Platform Flexibility: Elastic Beanstalk supports a wide range of programming languages and platforms, including Java, .NET, Node.js, PHP, Python, Ruby, Go, and Docker. It provides pre-configured platforms and environments tailored for each programming language, ensuring compatibility and reducing setup time.
@@ -282,7 +296,8 @@ many more......
 
 
 
-### What is the difference between Amazon SNS and Amazon SQS?
+## What is the difference between Amazon SNS and Amazon SQS?
+
 - Amazon SNS (Simple Notification Service) and Amazon SQS (Simple Queue Service) are two messaging services provided by Amazon Web Services (AWS) that serve different purposes. Here's a comparison of Amazon SNS and Amazon SQS:
 - **Amazon SNS (Simple Notification Service)**:
     - Message Distribution: Amazon SNS is a publish-subscribe messaging service that allows you to send messages to multiple subscribers simultaneously. It follows a push-based model, where a message published to a topic is immediately delivered to all subscribers who have subscribed to that topic.
@@ -304,7 +319,8 @@ many more......
 
 
 
-### What is the purpose of Amazon CloudWatch?
+## What is the purpose of Amazon CloudWatch?
+
 - The purpose of Amazon CloudWatch is to provide monitoring, management, and operational visibility for your AWS resources and applications. It is a fully managed monitoring service that collects and tracks metrics, logs, and events from various AWS services and resources, as well as from custom applications and on-premises servers.
     - Monitoring: CloudWatch allows you to monitor the performance and health of your AWS resources in real-time. It collects and aggregates metrics such as CPU utilization, network traffic, disk usage, and request latency from services like Amazon EC2, RDS, Lambda, and more. You can set up custom dashboards to visualize and gain insights into your resource utilization and performance.
     - Alarms: CloudWatch enables you to set alarms based on predefined or custom metrics. Alarms can trigger actions when specific thresholds are breached, such as sending notifications, auto-scaling instances, or executing automated remediation scripts. Alarms help you proactively respond to potential issues or performance degradation.
@@ -321,7 +337,8 @@ many more......
 
 
 
-### Explain the difference between Amazon S3 and EBS (Elastic Block Store).
+## Explain the difference between Amazon S3 and EBS (Elastic Block Store).
+
 - Amazon S3 (Simple Storage Service) and Amazon EBS (Elastic Block Store) are both storage services provided by AWS, but they have different purposes and characteristics. Here are the key differences between Amazon S3 and EBS:
     - Object Storage vs. Block Storage: Amazon S3 is an object storage service, while Amazon EBS is a block storage service. S3 is designed for storing and retrieving large amounts of unstructured data, such as files, images, videos, and backups. EBS, on the other hand, provides persistent block-level storage volumes that can be attached to EC2 instances, similar to a traditional hard drive.
     - Data Access: In Amazon S3, data is accessed through HTTP/HTTPS APIs, making it suitable for web-based applications and content distribution. S3 provides a simple and scalable storage solution with high durability and availability. In contrast, EBS volumes are accessed at the block level and provide a file system interface to the attached EC2 instances. EBS is commonly used for operating systems, databases, and applications that require direct block-level access.
@@ -334,7 +351,8 @@ many more......
 
 
 
-### Amplify in aws
+## Amplify in aws
+
 - AWS Amplify is a development platform provided by Amazon Web Services (AWS) that simplifies the process of building web and mobile applications. It offers a set of tools, services, and libraries that help developers quickly create scalable, secure, and feature-rich applications.
 - Here are some key features and components of AWS Amplify:
     - **Backend as a Service (BaaS)**: Amplify provides a fully managed backend infrastructure, known as AWS Amplify Backend, which includes services like authentication, storage, APIs, databases, and serverless functions. This allows developers to focus on building frontend features without worrying about managing backend infrastructure.
@@ -351,7 +369,8 @@ many more......
 
 
 
-### SES AWS
+## SES AWS
+
 - Amazon Simple Email Service (SES) is a cloud-based email sending and receiving service provided by Amazon Web Services (AWS). It allows you to send and receive emails using a scalable and reliable infrastructure.
     - Email Sending: SES enables you to send transactional emails, marketing emails, and other types of high-quality content to your customers. You can send emails directly from your applications or use the SMTP interface provided by SES.
     - Scalability and Deliverability: SES is designed to handle large-scale email sending and offers high deliverability rates. It leverages the infrastructure and reputation of AWS to ensure that your emails reach their intended recipients' inboxes.
@@ -370,7 +389,8 @@ many more......
 
 
 
-### How can you ensure high availability of your application in AWS?
+## How can you ensure high availability of your application in AWS?
+
 - Multi-Availability Zone (Multi-AZ) Deployment
 - Load Balancing
 - Auto scaling
@@ -388,7 +408,8 @@ many more......
 
 
 
-### Explain the concept of VPC (Virtual Private Cloud) in AWS.
+## Explain the concept of VPC (Virtual Private Cloud) in AWS.
+
 - In AWS, a Virtual Private Cloud (VPC) is a logically isolated virtual network that you can create within your AWS account. It provides a secure and private environment for your AWS resources, such as Amazon EC2 instances, RDS databases, and Elastic Load Balancers, to run and communicate.
 - Here are the key concepts and features of VPC:
      - Network Isolation: A VPC allows you to create a virtual network with its IP address range, subnets, and routing tables. It provides network isolation, allowing you to have full control over your virtual network's configuration and connectivity.
@@ -417,7 +438,8 @@ many more......
 
 
 
-### What are the cost optimization strategies in AWS?
+## What are the cost optimization strategies in AWS?
+
 - Cost optimization is an important aspect of managing resources in AWS. Here are some strategies and best practices for cost optimization in AWS:
    -  Right Sizing: Analyze the resource utilization of your AWS instances and services. Right size your instances by choosing the appropriate instance types and sizes based on your workload requirements. Use tools like AWS Cost Explorer and AWS Trusted Advisor to identify underutilized resources and consider resizing or using reserved instances to save costs.
 
