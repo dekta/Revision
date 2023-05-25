@@ -192,7 +192,104 @@ To avoid memory leaks in JavaScript, it is important to be mindful of
 
 
 
+## Is javascript a statically typed or a dynamically typed language?
+
+JavaScript is a dynamically typed language. In a dynamically typed language, the type of a variable is checked during run-time in contrast to a statically typed language, where the type of a variable is checked during compile-time.
+
+Since javascript is a loosely(dynamically) typed language, variables in JS are not associated with any type. A variable can hold the value of any data type.
+
+For example, a variable that is assigned a number type can be converted to a string type.
+
+![Static vs Dynamic Typing](https://d3n0h9tb65y8q.cloudfront.net/public_assets/assets/000/003/407/original/static_vs_dynamic.png?1654852333)
+
+
+*Refer Miscellaneous for RunTime and CompileTime*
+
+
+## *What is NaN property in JavaScript?*
+
+*NaN* property represents the “Not-a-Number” value. It indicates a value that is not a legal number.
+
+*typeof* of NaN will return a Number.
+
+To check if a value is NaN, we use the isNaN() function,
+
+Note- *isNaN() function converts the given value to a Number type, and then equates to NaN.*
+
+isNaN("Hello")  // Returns `true`
+isNaN(345)   // Returns `false`
+isNaN('1')  // Returns `false`, since '1' is converted to Number type which results in 0 ( a number) 
+isNaN(true) // Returns `false`, since true converted to Number type results in 1 ( a number)
+isNaN(false) // Returns `false`
+isNaN(undefined) // Returns `true`
 
 
 
+## What is an Immediately Invoked Function (IIFE) in JavaScript?
 
+It is a JavaScript design pattern that involves creating a function and immediately executing it. 
+
+```javascript
+function(){ 
+  // Do something;
+})();
+```
+To understand IIFE, we need to understand the two sets of parentheses that are added while creating an IIFE :
+
+The first set of parenthesis:
+
+```javascript
+(function (){
+   //Do something;
+})
+```
+While executing javascript code, whenever the compiler sees the word *“function”*, it assumes that we are declaring a function in the code. Therefore, if we do not use the first set of parentheses, the compiler throws an error because it thinks we are declaring a function, and by the syntax of declaring a function, a function should always have a name.
+
+```javascript
+function() {
+  //Do something;
+};
+```
+// Compiler gives an error since the syntax of declaring a function is wrong in the code above.
+To remove this error, we add the first set of parenthesis that tells the compiler that the function is not a function declaration, instead, it’s a function expression.
+
+The second set of parenthesis:
+
+```javascript 
+(function (){
+  //Do something;
+})();
+```
+From the definition of an IIFE, we know that our code should run as soon as it is defined. A function runs only when it is invoked. If we do not invoke the function, the function declaration is returned:
+
+```javascript
+(function (){
+  // Do something;
+})
+// Returns the function declaration
+
+```
+
+Therefore to invoke the function, we use the second set of parenthesis
+
+***Advantages of using IIFE***
+
+- *Encapsulation*: The variables and functions defined within an IIFE are not accessible from the outside scope. They are encapsulated within the function, which helps prevent variable name clashes and keeps the global namespace clean.
+
+- *Privacy*: Since the variables and functions within an IIFE are not accessible from the outside, it provides a way to create private variables and functions. This can be useful for creating modules or libraries where you want to expose only specific functionality.
+
+- *Avoiding global scope pollution*: By enclosing your code within an IIFE, you prevent polluting the global scope with variables and functions. This is particularly important when working on larger projects or when using third-party libraries to avoid conflicts.
+
+- *Controlled execution*: The code within an IIFE executes immediately after its definition. This can be useful for initializing variables, setting up configurations, or executing a block of code that needs to run once.
+
+- *Avoiding naming collisions*: Since the variables and functions within an IIFE have their own scope, you can use variable and function names freely without worrying about conflicting with other code.
+
+Overall, IIFEs are commonly used in JavaScript to create private scopes, avoid global namespace pollution, and provide encapsulation for modular code.
+
+However, there are some cases where using an IIFE may not be necessary or appropriate:
+
+- *ES Modules*: With the introduction of ES modules in modern JavaScript, you have the option to use import and export statements to achieve encapsulation and modular code. If you are working with a modern JavaScript environment that supports modules, you may consider using modules instead of relying solely on IIFEs.
+
+- *Event handlers* 
+
+- *Global initialization*: If you need to perform global initialization tasks, such as setting up configuration variables or initializing libraries, an IIFE might not be necessary.
