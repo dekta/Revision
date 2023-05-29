@@ -118,11 +118,11 @@
 ### LIKE
 - % - Any number or characters
 - _ - Single character
-``SELECT * FROM students_marks WHERE name LIKE 'a%';``
-``SELECT * FROM students_marks WHERE name LIKE '%a';``
-``SELECT * FROM students_marks WHERE name LIKE '_a%';``
-``SELECT * FROM students_marks WHERE name LIKE '%a_';``
-``SELECT * FROM students_marks WHERE name LIKE '___a%';``
+    ``SELECT * FROM students_marks WHERE name LIKE 'a%';``
+    ``SELECT * FROM students_marks WHERE name LIKE '%a';``
+    ``SELECT * FROM students_marks WHERE name LIKE '_a%';``
+    ``SELECT * FROM students_marks WHERE name LIKE '%a_';``
+    ``SELECT * FROM students_marks WHERE name LIKE '___a%';``
 
 
 
