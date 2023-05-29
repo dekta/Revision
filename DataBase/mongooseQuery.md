@@ -24,6 +24,66 @@
     https://interviewhandbook.notion.site/NoSQL-282749fd15d540ff8afee0cf1517ee18
 
 
+## Explain why mongoose does not return a promise but has a .then
+- Mongoose is a library for working with MongoDB databases in Node.js. While most database operations in Mongoose are asynchronous, Mongoose does not return Promises by default.
+- Instead, Mongoose uses a callback function to handle the results of asynchronous operations. However, Mongoose also provides a .then() method that allows you to chain asynchronous operations together, similar to Promises.
+- So while Mongoose does not directly return Promises, it provides a way to work with Promises using the .then() method.
+
+
+
+## What are pre and post hooks?
+- In Mongoose, pre and post hooks are functions that can be executed before or after certain operations are performed on a Mongoose model or document.
+- Pre hooks are functions that are executed before a specified operation is performed on a model or document. These functions are useful for performing additional validation, modifying data, or executing additional logic before an operation is executed. Pre hooks can be registered using the pre() method on a Mongoose schema.
+- Post hooks are functions that are executed after a specified operation is performed on a model or document. These functions are useful for logging or auditing data, executing additional logic, or modifying data after an operation is executed. Post hooks can be registered using the post() method on a Mongoose schema.
+- example
+    ```javascript
+     const mongoose = require('mongoose');
+    const userSchema = new mongoose.Schema({name: String,email: String,});
+    userSchema.pre('save', function (next) {const now = new Date();
+                this.updatedAt = now;
+                if (!this.createdAt) {
+                this.createdAt = now;
+                }
+                next();
+                });
+     userSchema.post('save', function (doc, next) {
+            console.log(`User ${doc.name} saved`);
+            next();
+            });
+    const User = mongoose.model('User', userSchema);
+
+
+## What are aggregation pipelines with mongoose?
+
+- Aggregation pipelines in Mongoose are a way to process and transform data from MongoDB collections using a sequence of stages.
+- An aggregation pipeline consists of a series of stages that are executed in a specific order to transform the input data. Each stage in the pipeline takes the input documents and performs some operation on them, passing the results to the next stage.
+- The stages in an aggregation pipeline can perform a wide range of operations, such as filtering, sorting, grouping, and transforming data. Some examples of pipeline stages include $match, $group, $sort, $project, and $lookup.
+- Aggregation pipelines in Mongoose are defined using the aggregate() method, which takes an array of pipeline stages as its argument. Once the pipeline is defined, you can execute it using the exec() method, which returns a Promise that resolves to an array of output documents.
+- Aggregation pipelines are a powerful tool for working with data in MongoDB collections, and can be used for a wide range of tasks such as data analysis, reporting, and business intelligence.
+    ```javascript
+         const Order = mongoose.model('Order', { total: Number});
+         Order.aggregate([{ $group: { _id: null, avgTotal: { $avg: "$total" } } }]).exec((err, result) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        console.log(result);
+        });
+
+
+## How do you create indexes with mongoose
+- we can create indexes in Mongoose using the Model.ensureIndexes() method.
+- The ensureIndexes() method ensures that all defined indexes are created in the background. It takes a callback function that is called once all indexes have been created, or if an error occurs during the index creation process.
+- Example =>
+    ```javascript
+        const mongoose = require('mongoose');
+        const userSchema = new mongoose.Schema({name: String,email: String,});
+        userSchema.index({ email: 1 }, { unique: true });
+        const User = mongoose.model('User', userSchema);
+         User.ensureIndexes((err) => {if (err) {console.error(err);} else {console.log('Indexes created successfully'); }});
+
+
+
 
 ## Mongoose basic query:
 - Mongoose is an Object-Data Modeling (ODM) library for Node.js and MongoDB, which provides a straightforward way to interact with MongoDB databases. It simplifies the process of defining schemas, creating models, and performing database operations.

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .slider {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            }
+
+            .slides {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            }
+
+            .slide {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+
+            .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            }
+
+            button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1;
+            }
+
+            .prev {
+            left: 20px;
+            }
+
+            .next {
+            right: 20px;
+            }
+
+
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="slides">
+          <div class="slide">
+            <img src="https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg">
+          </div>
+          <div class="slide">
+            <img src="https://www.shutterstock.com/image-photo/mountains-under-mist-morning-amazing-260nw-1725825019.jpg">
+          </div>
+          <div class="slide">
+            <img src="https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg">
+          </div>
+        </div>
+        <button class="prev">Previous</button>
+        <button class="next">Next</button>
+      </div>
+      
+
+<script>
+    
+    const slides = document.querySelectorAll(".slide");
+        const slideCount = slides.length;
+        let currentIndex = 0;
+
+        
+        slides[currentIndex].style.display = "block";
+
+        function showSlide(index) {
+    
+            slides[currentIndex].style.display = "none";
+            currentIndex = (index + slideCount) % slideCount;
+            slides[currentIndex].style.display = "block";
+        }
+
+        
+        document.querySelector(".prev").addEventListener("click", () => {
+        showSlide(currentIndex - 1);
+        });
+
+        document.querySelector(".next").addEventListener("click", () => {
+        showSlide(currentIndex + 1);
+        });
+
+        
+        setInterval(() => {
+        showSlide(currentIndex + 1);
+        }, 5000);
+
+
+</script>
+</body>
+</html>

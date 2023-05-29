@@ -201,3 +201,11 @@ ODM is a technique similar to ORM, but it is used to map objects from an object-
         - File Export: Similar to importing, DBMSs allow exporting data to files in different formats like CSV, JSON, XML, or Excel. You can use specific commands or utilities provided by the DBMS to extract data from the database and save it to a file.
         - Database Dump/Backup: Many DBMSs provide functionality to create a database dump or backup, which is a comprehensive snapshot of the entire database or specific tables. This backup file can be used to restore the database or transfer the data to another system.
 - It's important to consult the documentation or resources specific to your DBMS for detailed instructions on how to import and export data, as the methods and commands can differ between DBMSs.
+
+
+
+## My query/update seems to execute twice. Why is this happening?
+- If your query or update seems to be executing twice in Mongoose, it is likely because you are calling the function twice. There are a few common reasons why this can happen:
+    - **Incorrect use of middleware**: If you are using Mongoose middleware to execute code before or after a query or update, you may inadvertently trigger the query/update twice if you do not call the next() function at the end of the middleware function. This can cause the query/update to be executed twice, once for the original function call and once for the middleware function call.
+    - **Incorrect use of Promise**: If you are using a Promise to execute your query/update, you may be inadvertently executing the Promise twice by calling it multiple times. This can happen if you pass the Promise object to another function and forget to handle it properly.
+    - **Multiple event listeners**: If you are using event listeners to execute code when a query/update is executed, you may be inadvertently attaching multiple event listeners to the same event. This can cause the event listener code to be executed multiple times, resulting in multiple executions of the query/update.

@@ -293,3 +293,37 @@ However, there are some cases where using an IIFE may not be necessary or approp
 - *Event handlers* 
 
 - *Global initialization*: If you need to perform global initialization tasks, such as setting up configuration variables or initializing libraries, an IIFE might not be necessary.
+
+
+
+
+
+## What is non-blocking vs blocking?
+
+- In computer systems, "blocking" and "non-blocking" are terms used to describe how a program or system responds to requests or events. **Blocking methods execute synchronously and non-blocking methods execute asynchronously**.
+-  A blocking operation is one that stops the program from continuing until it has completed. During a blocking operation, the program will not respond to other requests or events. For example, if a program needs to read data from a file, it might block until the entire file is read. During this time, the program cannot perform any other tasks.
+    - Example =>   
+    ```javascript
+      const fs = require("fs");
+      const data = fs.readFileSync("/file.md"); // blocks here until file is read
+      console.log(data);
+      moreWork(); // will run after console.log
+
+-  a non-blocking operation is one that allows the program to continue executing even if the requested operation is not yet complete. If the operation cannot be completed immediately, the program can move on to perform other tasks or wait for the operation to complete at a later time. Non-blocking operations are typically used in applications that require high performance and responsiveness, such as real-time systems or web servers.
+    - Example =>  
+     ```javascript  
+      const fs = require("fs");
+      fs.readFile("/file.md", (err, data) => {
+         if (err) throw err;
+            console.log(data);
+            });
+      moreWork(); // will run before console.log
+
+
+
+## What is common.js? how is it different from es modules?
+- CommonJS (or CJS) is a module system used in Node.js for organizing and sharing code between files. It was created before the introduction of ES Modules
+- In CommonJS, modules are loaded synchronously, which means that the module's code is executed as soon as it is loaded. CommonJS modules use the require() function to import modules and the module.exports object to export functionality from a module.
+- ES Modules (or ES6 Modules) is a module system introduced in ECMAScript 6 (ES6) and is supported in modern browsers and Node.js versions. ES Modules use a static import/export syntax to import and export functionality between modules.ES Modules are loaded asynchronously, which means that the module's code is executed only when it is needed. This can lead to better performance in some cases, as modules are loaded and executed only when they are needed.
+- One of the main differences between CommonJS and ES Modules is how they handle exports. In CommonJS, a module can export a single value or a collection of values through the module.exports object. In contrast, ES Modules export individual values using the export keyword.
+- Another difference is that CommonJS modules are evaluated synchronously and loaded dynamically, while ES Modules are evaluated asynchronously and loaded statically at compile-time.
