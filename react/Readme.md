@@ -214,7 +214,8 @@
         ```
 
 #### Render Different UI Based on props
-        ```javascript
+
+-         ```javascript
             function LoginMsg(props) {
             if (props.password === 'a-tough-password') {
                 return <h2>Sign In Successful.</h2>
@@ -222,9 +223,11 @@
                 return <h2>Sign In Failed..</h2>
             }
             }
-        ```
+            ```
+
 #### Pass an Event Handler as a prop
-    ```javascript
+
+-   ```javascript
         //talker.js
             import React from 'react';
             import Button from './Button';
@@ -281,7 +284,8 @@
         <BigButton />
 
 #### Giving Default Values to props
-    ```javascript
+
+   -  ```javascript
         function Example({text='This is default text'}) {
             return <h1>{text}</h1>
         }
