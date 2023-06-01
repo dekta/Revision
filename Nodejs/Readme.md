@@ -572,4 +572,34 @@
 - LRU cache is a popular caching strategy because it is simple to implement and effective at reducing cache misses. It is commonly used in web applications, databases, and operating systems to speed up access to frequently used data.
 
 
+## What are web sockets?
 
+- WebSockets are a communication protocol used in web development that allows for real-time, bidirectional communication between a client and a server over a single TCP (Transmission Control Protocol) connection. This protocol enables efficient and low-latency communication between a web browser and a server.
+- WebSockets provide a persistent connection between the client and the server, which allows data to be transmitted in both directions without the need for multiple HTTP requests. Unlike HTTP requests, which are request-response-based, WebSockets provide a full-duplex communication channel that allows data to be transmitted in real-time as soon as it is available.
+- WebSockets are commonly used in web applications that require real-time data transmission, such as chat applications, online gaming, and real-time analytics. They can also be used for other applications that require a persistent, low-latency connection between the client and the server, such as stock tickers, sports scores, or weather updates.
+
+
+
+
+## What is Cross Origin Resource Sharing? ( CORS ) Why do we need it?
+
+- Cross-Origin Resource Sharing (CORS) is a security feature implemented in modern web browsers that allows web pages from one domain to access resources (such as fonts, images, or APIs) from another domain. This feature is used to prevent web pages from making requests to resources on different domains, which could lead to security vulnerabilities like cross-site scripting (XSS) or cross-site request forgery (CSRF).
+- CORS works by adding HTTP headers to responses from the server that indicate which domains are allowed to access the resources. When a web page makes a request to a different domain, the browser first checks the response headers to ensure that the domain is allowed to access the requested resource. If the domain is not allowed, the browser blocks the request and displays an error message.
+- Without CORS, web pages would be limited to accessing resources only from the same domain, which could be a significant limitation for many web applications that rely on APIs or resources from multiple domains. CORS allows developers to build more complex and powerful web applications that can access resources from different domains, while still maintaining security and protecting against malicious attacks.
+
+
+## What does Access-Control-Allow-Origin header do?
+
+- It is important to note that the Access-Control-Allow-Origin header is a security feature that helps prevent malicious attacks like cross-site scripting (XSS) and cross-site request forgery (CSRF) by restricting access to resources from unauthorized domains.
+- the Access-Control-Allow-Origin header is a response header that is used in CORS to specify which domains are allowed to access the resources of a web application. It is a crucial security feature that helps prevent unauthorized access to resources from malicious domains.
+
+
+
+
+## How is web sockets different from HTTP?
+
+- Connection type: HTTP is a request-response protocol, where the client sends a request to the server, and the server responds with a response. WebSockets, on the other hand, provide a full-duplex, persistent connection between the client and the server that allows data to be transmitted in both directions at any time.
+- Data format: HTTP is a text-based protocol that uses structured messages (requests and responses) in a specific format. WebSockets use a binary protocol that allows for more efficient transmission of data and can transmit any type of data, not just text.
+- Efficiency: Because HTTP requires a new request and response for each piece of data sent between the client and the server, it can be less efficient than WebSockets, which use a persistent connection to transmit data more efficiently.
+- Real-time capabilities: HTTP is not designed for real-time communication, and while techniques like long-polling can be used to simulate real-time communication, it is not as efficient as WebSockets, which are specifically designed for real-time communication.
+- Support for server-initiated updates: HTTP requests are always initiated by the client, whereas WebSockets can support server-initiated updates, where the server can send data to the client at any time without the client first requesting it.

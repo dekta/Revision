@@ -215,15 +215,15 @@
 
 #### Render Different UI Based on props
 
--         ```javascript
-            function LoginMsg(props) {
+-   ```javascript
+        function LoginMsg(props) {
             if (props.password === 'a-tough-password') {
                 return <h2>Sign In Successful.</h2>
             } else {
                 return <h2>Sign In Failed..</h2>
             }
-            }
-            ```
+        }
+    ```
 
 #### Pass an Event Handler as a prop
 
@@ -293,3 +293,174 @@
 
 
 
+## Hooks:
+#### Why Use Hooks?
+- React Hooks, plainly put, are functions that let us manage the internal state of components and handle post-rendering side effects directly from our function components. Using Hooks, we can determine what we want to show the users by declaring how our user interface should look based on the state. 
+
+- React offers a number of built-in Hooks. A few of these include useState(), useEffect(), useContext(), useReducer(), and useRef(). See the full list in the React docs.
+
+    #### Use State :
+    - When we call the useState() function, it returns an array with two values:
+        - The current state: The current value of this state.
+        - The state setter: A function that we can use to update the value of this state.
+        ```javascript
+            const [currentState, setCurrentState] = useState();
+        ```
+    - Example: 
+        ```javascript
+           import React, { useState } from 'react';
+
+            export default function ColorPicker() {
+            const [color, setColor] = useState();
+
+            const divStyle = {backgroundColor: color};
+            return (
+                <div style={divStyle}>
+                <p>The color is {color}</p>
+                <button onClick={() => setColor('Aquamarine')}>
+                    Aquamarine
+                </button>
+                <button onClick={() => setColor('BlueViolet')}>
+                    BlueViolet
+                </button>
+                <button onClick={() => setColor('Chartreuse')}>
+                    Chartreuse
+                </button>
+                <button onClick={() => setColor('CornflowerBlue')}>
+                    CornflowerBlue
+                </button>
+                </div>
+            );
+            }
+    - setToggle(), is called by our onClick event listeners. To update the value of toggle and re-render this component with the new value, all we need to do is call the setToggle() function with the next state value as an argument.
+    - With the State Hook, updating the state is as simple as calling a state setter function. Calling the state setter signals to React that the component needs to re-render, so the whole function defining the component is called again. The magic of useState() is that it allows React to keep track of the current value of the state from one render to the next!
+
+
+    #### Initialize State
+    - Like how you used the State Hook to manage a variable with string values, we can use the State Hook to manage the value of any primitive data type and even data collections like arrays and objects!
+    - Example:
+    ```javascript
+        import React, { useState } from 'react';
+ 
+        function ToggleLoading() {
+        const [isLoading, setIsLoading] = useState();
+        
+        return (
+            <div>
+            <p>The data is {isLoading ? 'Loading' : 'Not Loading'}</p>
+            <button onClick={() => setIsLoading(true)}>
+                Turn Loading On
+            </button>
+            <button onClick={() => setIsLoading(false)}>
+                Turn Loading Off
+            </button>
+            </div>
+        );
+    ```
+
+    #### Use State Setter Outside of JSX:
+    ```javascript
+        import React, { useState } from "react";
+
+        // regex to match numbers between 1 and 10 digits long
+        const validPhoneNumber = /^\d{1,10}$/;
+
+        export default function PhoneNumber() {
+        const [phone, setPhone] = useState("");
+
+        const handleChange = ({ target }) => {
+            const newPhone = target.value;
+            const isValid = validPhoneNumber.test(newPhone);
+            if (isValid) {
+            setPhone(newPhone);
+            }
+            else{
+            setPhone('')
+            }
+            // just ignore the event, when new value is invalid
+        };
+
+        return (
+            <div className="phone">
+            <label for="phone-input">Phone: </label>
+            <input value={phone} onChange={handleChange} id="phone-input" />
+            </div>
+        );
+    }
+    ```
+
+
+    #### Set From Previous State
+    -  React state updates are asynchronous. This means that there are some scenarios where portions of your code will run before the state is finished updating.
+
+    - This is a good and a bad thing! Grouping the state updates together can improve performance in your application, but it can result in outdated state values. Consequently, it is best practice to update a state with a callback function, preventing accidental outdated values.
+
+    - Let’s take a look at the following code to see how it’s done:
+
+    ```javascript
+        import React, { useState } from 'react';
+ 
+        export default function Counter() {
+        const [count, setCount] = useState(0);
+        
+        const increment = () => setCount(prevCount => prevCount + 1);
+        
+        return (
+            <div>
+            <p>Wow, you've clicked that button: {count} times</p>
+            <button onClick={increment}>Click here!</button>
+            </div>
+        );
+        }
+    ```
+    - When the button is pressed, the increment() event handler is called. Inside this function, we use our setCount() state setter with a callback function.
+    - Because the next value of count depends on the previous value of count, we pass a callback function as the argument for setCount() instead of a value .
+    - When our state setter calls the callback function, this state setter callback function takes our previous count as an argument. The value returned by this state setter callback function is used as the next value of count (in this case, prevCount + 1).
+    - We can also just call setCount(count +1) and it would work the same in this example, but it is safer to use the callback method.
+
+
+
+    #### Arrays in State
+    ```javascript
+        import React, { useState } from 'react';
+ 
+        //Static array of pizza options offered. 
+        const options = ['Bell Pepper', 'Sausage', 'Pepperoni', 'Pineapple'];
+        
+        export default function PersonalPizza() {
+        const [selected, setSelected] = useState([]);
+ 
+        const toggleTopping = ({target}) => {
+            const clickedTopping = target.value;
+            setSelected((prev) => {
+            // check if clicked topping is already selected
+            if (prev.includes(clickedTopping)) {
+                // filter the clicked topping out of state
+                return prev.filter(t => t !== clickedTopping);
+            } else {
+                // add the clicked topping to our state
+                return [clickedTopping, ...prev];
+            }
+            });
+        };
+        
+        return (
+            <div>
+            {options.map(option => (
+                <button value={option} onClick={toggleTopping} key={option}>
+                {selected.includes(option) ? 'Remove ' : 'Add '}
+                {option}
+                </button>
+            ))}
+            <p>Order a {selected.join(', ')} pizza</p>
+            </div>
+        );
+        }
+    ```
+    - In the above example, we are using two arrays:
+        - The options array contains the names of all of the pizza toppings available.
+        - The selected array represents the selected toppings for our personal pizza.
+    - The options array contains static data, meaning that it does not change. It’s best practice to define static data models outside of function components since they don’t need to be recreated each time our component re-renders. In our JSX, we use the JavaScript .map() method to render a button for each of the toppings in our options array.
+    - The selected array contains dynamic data, meaning that it changes, usually based on a user’s actions. We initialize selected as an empty array. When a button is clicked, the toggleTopping() event handler is called. Notice how this event handler uses information from the event object to determine which topping was clicked.
+    - When updating an array in a state, we do not just add new data to the previous array. We replace the previous array with a brand new array. This means that any information that we want to save from the previous array needs to be explicitly copied over to our new array. That’s what this spread syntax does for us: ...prev.
+    - Notice how we use the .includes(), .filter(), and .map() methods of our arrays. If these are new to you, or you just want a refresher, take a minute to review these array methods. We don’t need to be full-fledged JavaScript gurus to build React applications but know that investing time to strengthen our JavaScript skills will always help us do more faster (and have a lot more fun doing it) as React developers.
