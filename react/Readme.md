@@ -199,6 +199,7 @@
             );
             }
             export default Product;
+        ```
     - app.js
         ```javascript
             //app.js
@@ -224,34 +225,34 @@
         ```
 #### Pass an Event Handler as a prop
     ```javascript
-    //talker.js
-        import React from 'react';
-        import Button from './Button';
+        //talker.js
+            import React from 'react';
+            import Button from './Button';
 
-        function Talker() {
-        function talk() {
-            let speech = '';
-            for (let i = 0; i < 10000; i++) {
-            speech += 'blah ';
+            function Talker() {
+            function talk() {
+                let speech = '';
+                for (let i = 0; i < 10000; i++) {
+                speech += 'blah ';
+                }
+                alert(speech);
+                }
+            return <Button talk={talk}/>;
             }
-            alert(speech);
-            }
-        return <Button talk={talk}/>;
-        }
 
-        export default Talker;
+            export default Talker;
     
-    //button.js
-    import React from 'react';
-    function Button(props) {
-    return (
-        <button onClick={props.talk}>
-        Click me!
-        </button>
-    );
-    }
+            //button.js
+            import React from 'react';
+            function Button(props) {
+            return (
+                <button onClick={props.talk}>
+                Click me!
+                </button>
+            );
+            }
 
-    export default Button;
+            export default Button;
     ```
 
 
