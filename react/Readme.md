@@ -143,7 +143,7 @@
 
 ## Using and Rendering a Component
  - index.html file:
-        ```javascript
+    ```javascript
             // index.html
             <!DOCTYPE html>
             <html lang="en">
@@ -155,11 +155,10 @@
             <body>
             <main id="app">
             </main>
-                <script src="https://content.codecademy.com/courses/React/react-18-course-bundle.min.js"></script>
             <script src="/index.compiled.js"></script>
             </body>
             </html>
-
+        ```
 - index.js
     ```javascript
            import React from 'react';
@@ -464,3 +463,4 @@
     - The selected array contains dynamic data, meaning that it changes, usually based on a user’s actions. We initialize selected as an empty array. When a button is clicked, the toggleTopping() event handler is called. Notice how this event handler uses information from the event object to determine which topping was clicked.
     - When updating an array in a state, we do not just add new data to the previous array. We replace the previous array with a brand new array. This means that any information that we want to save from the previous array needs to be explicitly copied over to our new array. That’s what this spread syntax does for us: ...prev.
     - Notice how we use the .includes(), .filter(), and .map() methods of our arrays. If these are new to you, or you just want a refresher, take a minute to review these array methods. We don’t need to be full-fledged JavaScript gurus to build React applications but know that investing time to strengthen our JavaScript skills will always help us do more faster (and have a lot more fun doing it) as React developers.
+
