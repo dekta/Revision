@@ -293,44 +293,36 @@
 
 
 ## Hooks:
-#### Why Use Hooks?
+### Why Use Hooks?
 - React Hooks, plainly put, are functions that let us manage the internal state of components and handle post-rendering side effects directly from our function components. Using Hooks, we can determine what we want to show the users by declaring how our user interface should look based on the state. 
+
+- Before Hooks, function components were only used to accept data in the form of props and return some JSX to be rendered. The State Hook allows us to manage dynamic data, in the form of component state, within our function components
 
 - React offers a number of built-in Hooks. A few of these include useState(), useEffect(), useContext(), useReducer(), and useRef(). See the full list in the React docs.
 
-    #### Use State :
-    - When we call the useState() function, it returns an array with two values:
+### Use State :
+
+- When we call the useState() function, it returns an array with two values:
         - The current state: The current value of this state.
         - The state setter: A function that we can use to update the value of this state.
         ```javascript
             const [currentState, setCurrentState] = useState();
         ```
     - Example: 
-        ```javascript
-           import React, { useState } from 'react';
-
-            export default function ColorPicker() {
-            const [color, setColor] = useState();
-
-            const divStyle = {backgroundColor: color};
-            return (
-                <div style={divStyle}>
-                <p>The color is {color}</p>
-                <button onClick={() => setColor('Aquamarine')}>
-                    Aquamarine
-                </button>
-                <button onClick={() => setColor('BlueViolet')}>
-                    BlueViolet
-                </button>
-                <button onClick={() => setColor('Chartreuse')}>
-                    Chartreuse
-                </button>
-                <button onClick={() => setColor('CornflowerBlue')}>
-                    CornflowerBlue
-                </button>
-                </div>
-            );
-            }
+    ```javascript
+        import React, { useState } from "react";
+ 
+        function Toggle() {
+            const [toggle, setToggle] = useState();
+                return (
+                    <div>
+                    <p>The toggle is {toggle}</p>
+                    <button onClick={() => setToggle("On")}>On</button>
+                    <button onClick={() => setToggle("Off")}>Off</button>
+                    </div>
+                );
+        }
+    ```
     - setToggle(), is called by our onClick event listeners. To update the value of toggle and re-render this component with the new value, all we need to do is call the setToggle() function with the next state value as an argument.
     - With the State Hook, updating the state is as simple as calling a state setter function. Calling the state setter signals to React that the component needs to re-render, so the whole function defining the component is called again. The magic of useState() is that it allows React to keep track of the current value of the state from one render to the next!
 
@@ -464,3 +456,160 @@
     - When updating an array in a state, we do not just add new data to the previous array. We replace the previous array with a brand new array. This means that any information that we want to save from the previous array needs to be explicitly copied over to our new array. That’s what this spread syntax does for us: ...prev.
     - Notice how we use the .includes(), .filter(), and .map() methods of our arrays. If these are new to you, or you just want a refresher, take a minute to review these array methods. We don’t need to be full-fledged JavaScript gurus to build React applications but know that investing time to strengthen our JavaScript skills will always help us do more faster (and have a lot more fun doing it) as React developers.
 
+
+    #### Objects in State
+
+    ```javascript
+        export default function Login() {
+        const [formState, setFormState] = useState({});
+        const handleChange = ({ target }) => {
+            const { name, value } = target;
+            setFormState((prev) => ({
+            ...prev,
+            [name]: value
+            }));
+        };
+        const handleSubmit = (event) => {
+            event.preventDefault();
+            alert(JSON.stringify(formState, '', 2));
+        };
+                
+        return (
+            <form onSubmit={handleSubmit}>
+            <input
+                value={formState.firstName}
+                onChange={handleChange}
+                name="firstName"
+                type="text"
+            />
+            <input
+                value={formState.password}
+                onChange={handleChange}
+                type="password"
+                name="password"
+            />
+            </form>
+        );
+        }
+    ```
+    - A few things to notice:
+        - We use a state setter callback function to update a state based on the previous value.
+        - The spread syntax is the same for objects as for arrays: { ...oldObject, newKey: newValue }.
+        - We reuse our event handler across multiple inputs by using the input tag’s name attribute to identify which input the change event came from.
+    - Once again, when updating the state with setFormState() inside a function component, we do not modify the same object. We must copy over the values from the previous object when setting the next value of a state. Thankfully, the spread syntax makes this super easy to do!
+    - Anytime one of the input values is updated, the handleChange() function will be called. Inside this event handler, we use object destructuring to unpack the target property from our event object, then we use object destructuring again to unpack the name and value properties from the target object.
+    
+    
+
+### useEffect:
+- There are three key moments when the Effect Hook can be utilized:
+    - When the component is first added, or mounted, to the DOM and renders.
+    - When the state or props change, causing the component to re-render.
+    - When the component is removed, or unmounted, from the DOM.
+
+- In simple terms, the effect in React is a way to perform certain actions after a component has been rendered or when its dependencies have changed. It allows you to handle side effects like fetching data from an API, updating the document title, subscribing to events, or any other actions that are not directly related to rendering the component.
+
+- The effect is a function that you define inside a React component using the useEffect hook. This function will be executed automatically by React after the component has been rendered.
+
+- The useEffect hook takes two arguments: the first argument is the function that contains the side effect code, and the second argument is an optional array of dependencies. The dependencies specify the values that the effect depends on. If any of the dependencies change, the effect will be triggered again.
+
+- Suppose we want to allow a user to change the title of the web page tab every time they type. We can implement this with the Effect Hook (useEffect()) like so:
+    ```javascript
+        import React, { useState, useEffect } from 'react';
+
+        function PageTitle() {
+        const [name, setName] = useState('');
+        
+        useEffect(() => {
+            document.title = `Hi, ${name}`;
+        });
+        
+        return (
+            <div>
+            <p>Use the input field below to rename this page!</p>
+            <input onChange={({target}) => setName(target.value)} value={name} type='text' />
+            </div>
+        );
+        }
+    ```
+    - The useEffect() function has no return value as the Effect Hook is used to call another function. We pass the callback function, or effect, to run after a component renders as the argument of the useEffect() function. In our example, the following effect runs after each time the PageTitle component renders:
+        ```javascript 
+            () => { document.title = `Hi, ${name}`;}
+        ```
+    - The onChange event listener triggers the PageTitle component to be re-rendered every time the user types in the input. Consequently, this triggers useEffect() and changes the document’s title.
+    
+
+    #### Clean Up Effects
+
+    - Some effects require cleanup. For example, we might want to add event listeners to some element in the DOM, beyond the JSX in our component. When we add event listeners to the DOM, it is important to remove those event listeners when we are done with them to avoid memory leaks!
+    - Let’s consider the following effect:
+        ```javascript
+            useEffect(()=>{
+                document.addEventListener('keydown', handleKeyPress);
+                // Specify how to clean up after the effect:
+                return () => {
+                    document.removeEventListener('keydown', handleKeyPress);
+                };
+        ```
+    - If our effect didn’t return a cleanup function, a new event listener would be added to the DOM’s document object every time that our component re-renders. Not only would this cause bugs, but it could cause our application performance to diminish and maybe even crash!
+
+    - Because effects run after every render and not just once, React calls our cleanup function before each re-render and before unmounting to clean up each effect call.
+
+    - If our effect returns a function, then the useEffect() Hook always treats that as the cleanup function. React will call this cleanup function before the component re-renders or unmounts. Since this cleanup function is optional, it is our responsibility to return a cleanup function from our effect when our effect code could create memory leaks.
+
+
+    #### Control When Effects Are Called
+
+    - we want to skip calling our effect on re-renders altogether.
+    - It is common, when defining function components, to run an effect only when the component mounts (renders the first time), but not when the component re-renders. The Effect Hook makes this very easy for us to do! If we want to only call our effect after the first render, we pass an empty array to useEffect() as the second argument. This second argument is called the dependency array.
+
+    - The dependency array is used to tell the useEffect() method when to call our effect and when to skip it. Our effect is always called after the first render but only called again if something in our dependency array has changed values between renders.
+
+    - Example
+        ```javascript
+            useEffect(() => {
+            alert("component rendered for the first time");
+            return () => {
+                alert("component is being removed from the DOM");
+            };
+            }, []); 
+        ```
+    - Without passing an empty array as the second argument to the useEffect() above, those alerts would be displayed before and after every render of our component, which is clearly not when those messages are meant to be displayed. Simply passing [] to the useEffect() function is enough to configure when the effect and cleanup functions are called!
+
+
+    #### Fetch Data
+    - When our effect is responsible for fetching data from a server, we pay extra close attention to when our effect is called. Unnecessary round trips back and forth between our React components and the server can be costly in terms of:
+        - Processing
+        - Performance
+        - Data usage for mobile users
+        - API service fees
+
+    - When the data that our components need to render doesn’t change, we can pass an empty dependency array so that the data is fetched after the first render. When the response is received from the server, we can use a state setter from the State Hook to store the data from the server’s response in our local component state for future renders. Using the State Hook and the Effect Hook together in this way is a powerful pattern that saves our components from unnecessarily fetching new data after every render!
+    - An empty dependency array signals to the Effect Hook that our effect never needs to be re-run, that it doesn’t depend on anything. Specifying zero dependencies means that the result of running that effect won’t change and calling our effect once is enough.
+    - A dependency array that is not empty signals to the Effect Hook that it can skip calling our effect after re-renders unless the value of one of the variables in our dependency array has changed. If the value of a dependency has changed, then the Effect Hook will call our effect again!
+
+    - Example
+        ```javascript
+            useEffect(() => {
+            document.title = `You clicked ${count} times`;
+            }, [count]); // Only re-run the effect if the value stored by count changes
+        ```
+    
+
+    #### Separate Hooks for Separate Effects
+    ```javascript
+        // Handle menuItems with one useEffect hook.
+        const [menuItems, setMenuItems] = useState(null);
+        useEffect(() => {
+        get('/menu').then((response) => setMenuItems(response.data));
+        }, []);
+        
+        // Handle position with a separate useEffect hook.
+        const [position, setPosition] = useState({ x: 0, y: 0 });
+        useEffect(() => {
+        const handleMove = (event) =>
+            setPosition({ x: event.clientX, y: event.clientY });
+        window.addEventListener('mousemove', handleMove);
+        return () => window.removeEventListener('mousemove', handleMove);
+        }, []);
+    ```
