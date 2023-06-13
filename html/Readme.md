@@ -13,6 +13,19 @@
 - <section> is a flexible container for holding content that shares a common informational theme or purpose.
 
 - <footer> is used to hold information that should appear at the end of a section of content and contain additional information about the section. Author’s name, copyright information, and related links are typical examples of such content.
+ 
+### Division of Tags Based On Their Usage
+- Structural Tags: &lt;html>, &lt;head>', &lt;body>, &lt;div>, &lt;span>, &lt;header>, &lt;footer> 
+- Text Formatting Tags: &lt;b>, &lt;i>, &lt;u>, &lt;small>, &lt;big>, &lt;strong>, &lt;code>, &lt;cite>
+- Multimedia Tags: \<img\>, \<audio\>, \<video\>, \<canvas\>, \<svg\>, \<embed\>
+- Input and Form Tags: \<form\>, \<input\>, \<textarea\>, \<legend\>, \<button\>, \<progress\>
+- Semantic Tags: \<header\>, \<nav\>, \<main\>, \<article\>, \<section\>, \<footer\>, \<h1\> to \<h6\>
+- Interactive Tags: \<a\>, \<button\>, \<input\>, \<select\>, \<textarea\>, \<summary\>, \<canvas\>
+- Table Tags: \<table\>, \<thead\>, \<tbody\>, \<tfoot\>, \<tr\>, \<th\>, \<td\>, \<caption\>
+
+
+
+
 
 
 
