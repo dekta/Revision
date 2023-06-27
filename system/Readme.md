@@ -475,18 +475,6 @@ In summary, there are several performance metrics that can be used to measure th
 
 
 
-
-## Differences between webhooks and WebSockets
-
-- Webhooks are used for one-way communication from a source application to a destination application, while WebSockets facilitate two-way communication between server and client.
-- Webhooks are mostly used by two servers to pass information, while WebSockets are used primarily for server-to-client (mostly web browsers) communication.
-- Also, webhooks close the socket connection on the receiving application once a response has been sent back, while WebSockets keep the connection open for as long as required and not just for a single transfer of information.
-- In terms of communication protocols, WebSocket uses its own custom WS protocol while webhooks use regular HTTP.
-
-
-
-
-
 ## Differences between webhooks and pub/sub
 
 - In a pub/sub system, message sources are decoupled from message consumers while in webhooks, the message producer is fully aware of the location of the consumer through the webhook URL.
@@ -512,3 +500,50 @@ In summary, there are several performance metrics that can be used to measure th
     - Consistency: Docker ensures that the application runs the same way in any environment. This eliminates the common "it works on my machine" problem that often occurs when developers work in different environments.
     - Isolation: Each Docker container runs in a separate environment, which means that one container cannot interfere with another. This provides greater security and stability for applications.
     - Efficiency: Docker containers are lightweight and use fewer resources than traditional virtual machines. This means that more containers can be run on the same physical machine, leading to greater efficiency and cost savings.
+
+
+
+
+## How to reduce api request
+- Reducing API requests can help improve the performance, efficiency, and cost-effectiveness of your application. Here are several techniques you can use to reduce the number of API requests:
+
+1. **Batching and Aggregating:**
+   - Instead of making multiple individual requests, combine related requests into a single batch request.
+   - Aggregate data from different API endpoints into a single response, reducing the number of round trips.
+   - Use bulk operations where available to process multiple items in a single request.
+
+2. **Caching and Cache-Control Headers:**
+   - Implement caching mechanisms on the client side or server side to store API responses and serve them without making additional requests.
+   - Utilize cache-control headers, such as `Cache-Control` and `Expires`, to specify caching rules for responses.
+   - Leverage content delivery networks (CDNs) to cache and serve static API responses closer to end-users.
+
+3. **Pagination and Partial Responses:**
+   - Implement pagination techniques to retrieve a specific subset of data rather than fetching the entire dataset in a single request.
+   - Use query parameters like `page` and `limit` to control the number of items returned per request.
+   - Support partial responses by allowing clients to specify which fields they actually need, reducing the data transferred.
+
+4. **Webhooks and Event-Driven Architecture:**
+   - Implement webhooks to push data or notifications to clients instead of relying on them to continuously poll for updates.
+   - Adopt an event-driven architecture where clients subscribe to relevant events and receive updates when changes occur.
+
+5. **Data Denormalization and Pre-computation:**
+   - Consider denormalizing or pre-computing data on the server-side to reduce the need for frequent API requests.
+   - Store frequently accessed or computed data in a format that can be readily served without additional processing.
+
+6. **Local Storage and Caching on the Client-Side:**
+   - Leverage local storage or client-side caching mechanisms to store data temporarily on the client-side.
+   - Retrieve data from local storage when needed instead of making API requests for the same data.
+
+7. **Smart Synchronization and Differential Updates:**
+   - Implement synchronization mechanisms that only update or fetch data that has changed since the last request.
+   - Utilize techniques like ETags, timestamps, or versioning to determine if data has been modified and needs to be fetched.
+
+8. **Optimized Data Structures and Algorithms:**
+   - Optimize the way data is stored and retrieved to minimize the need for excessive API requests.
+   - Utilize efficient data structures and algorithms to process and transform data on the client or server-side.
+
+9. **Data Prefetching and Preloading:**
+   - Anticipate user actions and prefetch relevant data in advance to reduce the need for on-demand API requests.
+   - Preload data in the background based on user context or navigation patterns.
+
+Remember that reducing API requests should be done thoughtfully, considering the specific requirements and constraints of your application. It's important to strike a balance between reducing requests and ensuring data consistency, freshness, and the overall user experience.
