@@ -613,3 +613,76 @@
         return () => window.removeEventListener('mousemove', handleMove);
         }, []);
     ```
+
+
+
+
+
+## REACT STYLES
+- React components can be styled in a number of different ways: inline styling, object variable styling, stylesheets, and CSS modules.
+
+- Inline styling can be used to apply styles to a single element. Inline styling can be done by giving the element an attribute named style whose value is an object literal surrounded in curly braces.
+    ```javascript
+        <h1 style={{color: "red"}}> Hello, World! </h1>
+    ```
+
+- An object variable can also be used to apply a style to a single element. The syntax is similar to inline styling, but rather than passing an object literal, the name of the variable is passed instead.
+     ```javascript
+        const myStyle = { color: "red" }
+        <h1 style={myStyle}> Hello, World! </h1>
+    ```
+- Style names in React must be in camelCase. For example, background-color becomes backgroundColor.
+- In React, a number style value is automatically interpreted with px.
+
+- Styles can be separated and stored into CSS module files. The styles can be imported and used by applying className attributes to the relevant elements.
+    ```javascript
+        import styles from './fileName.module.css'
+        <div className={styles.divStyle}></div>
+    ```
+
+
+
+## Controlled and uncontrolled components 
+***Controlled Components:**
+- Controlled components are React components where the value of an input element is controlled by the component's state. The state is updated whenever the value of the input changes, and the component re-renders with the new value. To modify the value of a controlled component, you need to update the state explicitly using the setState method.
+    - Example of a controlled component:
+    ```javascript
+        import React, { useState } from 'react';
+        function ControlledComponent() {
+        const [value, setValue] = useState('');
+
+        const handleChange = (event) => {
+            setValue(event.target.value);
+        };
+
+        return (
+            <input type="text" value={value} onChange={handleChange} />
+        );
+        }
+        ```
+***Uncontrolled Components:***
+- Uncontrolled components are React components where the value of an input element is handled by the DOM instead of the component's state. The component doesn't keep track of the value itself. Instead, you can obtain the value of the input using a ref or by accessing the DOM directly.
+    - Example of an uncontrolled component:
+        ```javascript
+        import React, { useRef } from 'react';
+
+        function UncontrolledComponent() {
+        const inputRef = useRef();
+
+        const handleClick = () => {
+            const value = inputRef.current.value;
+            // Do something with the value
+        };
+
+        return (
+            <div>
+            <input type="text" ref={inputRef} />
+            <button onClick={handleClick}>Submit</button>
+            </div>
+        );
+        }
+        ```
+
+
+
+
