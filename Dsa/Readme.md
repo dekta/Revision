@@ -68,6 +68,8 @@
 - mySet.has(value); // returns true if the value exists, false otherwise
 - mySet.size; // returns the number of elements in the Set
 - The order of values in a Set is determined by their insertion order. A Set only contains unique values, so if you try to add a value that already exists in the Set, it will be ignored.
+- Add or remove element: O(1)
+- Check if element exists: O(1)
 
 
 
@@ -82,6 +84,11 @@
     - Size: This operation returns the number of elements in the stack.
 - The space complexity of a stack is also O(n), where n is the number of elements in the stack. This is because a stack is a linear data structure that stores elements in a contiguous block of memory.
 - Example: A web browser uses a stack to keep track of the user's navigation history. Each time the user visits a new page, the page is pushed onto a stack. If the user clicks the back button, the most recent page is popped off the stack and displayed.
+- Push element: O(1)
+- Pop element: O(1)
+- Peek element: O(1)
+- Access or modify element at arbitrary index: O(1)
+- Check if element exists: O(n)
 
 
 
@@ -111,6 +118,13 @@
 - A linked list is a data structure consisting of a group of nodes, each of which contains a reference to the next node in the sequence. In a singly linked list, each node only has a reference to the next node, while in a doubly linked list, each node has references to both the next and previous nodes.
 - The time complexity of adding or removing a node from a linked list is O(n), where n is the number of nodes in the list, since we may need to traverse the entire list to find the node to add or remove. However, inserting or removing a node at the beginning of the list can be done in constant time, since we only need to update the head reference. The space complexity of a linked list is O(n), since we need to allocate memory for each node.
 - Example : Implementing a stack or queue: A linked list can be used to implement a stack or queue data structure. In this case, the linked list can be used to store the elements of the stack or queue, with the first element of the list representing the top of the stack or front of the queue.
+- Add or remove element given pointer before add/removal location:O(n)
+- Add or remove element given pointer at add/removal location:O(1) if doubly linked
+- Add or remove element at arbitrary position without pointer: O(n)
+- Access element at arbitrary position without pointer: O(n)
+- Check if element exists: O(n)
+- Reverse between position i and j: O(j−i)
+- Detect a cycle: O(n) using fast-slow pointers or hash map
 
 ### Tree 
 - A tree data structure is a hierarchical structure consisting of nodes connected by edges or links. It is similar to a real-life tree, where each node is like a branch connected to the trunk, and the edges represent the connection between the nodes.
@@ -129,6 +143,11 @@
 - A hash table, also known as a hash map, is a data structure that stores data in an associative manner, using key-value pairs. The keys are hashed to a numeric index, which is used to access the corresponding value in the table.
 - In JavaScript, hash tables can be implemented using objects, which are essentially collections of key-value pairs. When a new key-value pair is added to the hash table, the key is hashed using a hash function and the resulting index is used to store the value in the object. When retrieving a value, the hash function is used to calculate the index and the value is retrieved from the corresponding location in the object.
 - Hash tables are commonly used to implement caches, databases, and other data structures that require fast key-based lookups. They have a time complexity of O(1) for average case operations, making them efficient for use in many scenarios. However, in the worst case, hash tables can have a time complexity of O(n), where n is the number of elements in the table, if there are many hash collisions. Therefore, it's important to choose an appropriate hash function to minimize the chances of collisions.
+- Add or remove key-value pair: O(1)
+- Check if key exists: O(1)
+- Check if value exists: O(n)
+- Access or modify value associated with key: O(1)
+- Iterate over all keys, values, or both: O(n)
 
 
 
